@@ -1,0 +1,204 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at 20% 20%, #1a2a6c, #162447, #0f0c29);
+  position: relative;
+}
+
+/* --- STAR FIELD EFFECT --- */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(2px 2px at 20% 30%, #fff, transparent),
+              radial-gradient(1px 1px at 80% 60%, #fff, transparent),
+              radial-gradient(2px 2px at 50% 80%, #fff, transparent),
+              radial-gradient(1.5px 1.5px at 10% 70%, #fff, transparent),
+              radial-gradient(2px 2px at 90% 40%, #fff, transparent);
+  background-repeat: repeat;
+  animation: moveStars 600s linear infinite;
+  opacity: 0.7;
+}
+
+body::after {
+  animation-duration: 200s;
+  opacity: 0.4;
+}
+
+@keyframes moveStars {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-50%, -50%); }
+}
+
+/* --- GALAXY LIGHT MOTION --- */
+.galaxy-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.05), transparent 60%),
+              radial-gradient(circle at 70% 60%, rgba(255, 153, 255, 0.08), transparent 60%),
+              radial-gradient(circle at 50% 80%, rgba(173, 216, 255, 0.07), transparent 60%);
+  mix-blend-mode: screen;
+  animation: rotateGlow 60s linear infinite;
+}
+
+@keyframes rotateGlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --- MAIN CONTAINER --- */
+.container {
+  position: relative;
+  z-index: 10;
+  max-width: 400px;
+  text-align: center;
+  color: #fff;
+}
+
+.container h1 {
+  font-size: 25px;
+  text-shadow: 0 0 8px #aaf3ff;
+  margin-bottom: 15px;
+  animation: fadeDown 1s ease-in-out;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- CARD --- */
+.card {
+  display: none;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- BUTTONS --- */
+.card button {
+  border: none;
+  background: linear-gradient(45deg, #00c3ff, #004cff);
+  color: white;
+  padding: 12px 40px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 140, 255, 0.5);
+}
+
+.card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.7);
+}
+
+/* Upload input overlay */
+.card button input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.card p {
+  margin-top: 15px;
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+/* --- IMAGE DISPLAY --- */
+.image-cont {
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.image-cont img {
+  max-width: 100%;
+  border-radius: 10px;
+  animation: popIn 0.6s ease;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* --- DOWNLOAD CARD --- */
+#downloadCard .image-cont {
+  position: relative;
+  background-image: url("https://thumbs.dreamstime.com/b/transparent-designer-must-have-fake-background-39672616.jpg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 10px;
+}
+
+#downloadCard .image-before {
+  width: 30%;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border: 2px solid #fff;
+}
+
+/* Button group */
+.btns {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* --- LOADING ANIMATION --- */
+.loading::after {
+  content: "";
+  display: inline-block;
+  margin-left: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.8); opacity: 0.5; }
+}
